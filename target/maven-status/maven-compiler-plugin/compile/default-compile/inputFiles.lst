@@ -1,5 +1,6 @@
 E:\xampp\htdocs\CNW23N12\cnw2\src\main\java\com\cnw\models\bean\Member.java
 E:\xampp\htdocs\CNW23N12\cnw2\src\main\java\com\cnw\models\dao\MemberDAO.java
 E:\xampp\htdocs\CNW23N12\cnw2\src\main\java\com\cnw\controllers\MemberController.java
+E:\xampp\htdocs\CNW23N12\cnw2\src\main\java\com\cnw\controllers\AboutController.java
 E:\xampp\htdocs\CNW23N12\cnw2\src\main\java\com\cnw\utils\DBConnection.java
 E:\xampp\htdocs\CNW23N12\cnw2\src\main\java\com\cnw\models\bo\MemberBO.java

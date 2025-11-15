@@ -10,13 +10,14 @@ public class Member {
     private String email;
     private String gioiThieu;
     private String avtUrl;
+    private String matKhau;
 
     // Constructors
     public Member() {
     }
 
     public Member(int id, String hoVaTen, String congViec, String chucVu,
-            String diaChi, String sdt, String email, String gioiThieu, String avtUrl) {
+            String diaChi, String sdt, String email, String gioiThieu, String avtUrl, String matKhau) {
         this.id = id;
         this.hoVaTen = hoVaTen;
         this.congViec = congViec;
@@ -26,6 +27,7 @@ public class Member {
         this.email = email;
         this.gioiThieu = gioiThieu;
         this.avtUrl = avtUrl;
+        this.matKhau = matKhau;
     }
 
     // Getters and Setters
@@ -99,6 +101,14 @@ public class Member {
 
     public void setAvtUrl(String avtUrl) {
         this.avtUrl = avtUrl;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
 
     @Override

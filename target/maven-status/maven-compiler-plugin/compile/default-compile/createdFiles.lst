@@ -1,0 +1,6 @@
+com\cnw\controllers\AboutController.class
+com\cnw\models\bean\Member.class
+com\cnw\models\dao\MemberDAO.class
+com\cnw\utils\DBConnection.class
+com\cnw\controllers\MemberController.class
+com\cnw\models\bo\MemberBO.class

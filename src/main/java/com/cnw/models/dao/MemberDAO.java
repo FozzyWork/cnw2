@@ -31,6 +31,7 @@ public class MemberDAO {
                 member.setEmail(rs.getString("Email"));
                 member.setGioiThieu(rs.getString("GioiThieu"));
                 member.setAvtUrl(rs.getString("AvtUrl"));
+                member.setMatKhau(rs.getString("MatKhau"));
                 members.add(member);
             }
         } catch (SQLException e) {
@@ -74,6 +75,7 @@ public class MemberDAO {
                 member.setEmail(rs.getString("Email"));
                 member.setGioiThieu(rs.getString("GioiThieu"));
                 member.setAvtUrl(rs.getString("AvtUrl"));
+                member.setMatKhau(rs.getString("MatKhau"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

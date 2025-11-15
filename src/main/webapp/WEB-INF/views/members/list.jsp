@@ -12,15 +12,13 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
+            <a href="${pageContext.request.contextPath}/" class="nav-logo">
                 <img src="${pageContext.request.contextPath}/assets/icon.png" alt="Logo">
                 <span class="logo-text">CNW</span>
-            </div>
+            </a>
             <ul class="nav-menu">
-                <li><a href="members">MEMBERS</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#package">PACKAGE</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="${pageContext.request.contextPath}/members">MEMBERS</a></li>
+                <li><a href="${pageContext.request.contextPath}/about">ABOUT</a></li>
             </ul>
             <a href="#book" class="nav-btn">Book Trip</a>
         </div>
@@ -32,7 +30,7 @@
     <!-- Content -->
     <div class="content">
         <c:forEach var="member" items="${members}">
-            <div class="content-box">
+            <div class="content-box" onclick="showMemberModal(${member.id})" style="cursor: pointer;">
                 <div class="member-avatar">
                     <img src="${pageContext.request.contextPath}/assets/avatars/${member.avtUrl}" 
                          alt="${member.hoVaTen}">
@@ -56,5 +54,80 @@
             </div>
         </c:if>
     </div>
+    
+    <!-- Modal Panel -->
+    <div id="memberModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeMemberModal()">&times;</span>
+            <div id="modalBody">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Member data for modal
+        const members = [
+            <c:forEach var="member" items="${members}" varStatus="status">
+            {
+                id: ${member.id},
+                hoVaTen: "${member.hoVaTen}",
+                chucVu: "${member.chucVu}",
+                congViec: "${member.congViec}",
+                diaChi: "${member.diaChi}",
+                sdt: "${member.sdt}",
+                email: "${member.email}",
+                gioiThieu: "${member.gioiThieu}",
+                avtUrl: "${member.avtUrl}"
+            }<c:if test="${!status.last}">,</c:if>
+            </c:forEach>
+        ];
+        
+        function showMemberModal(memberId) {
+            const member = members.find(m => m.id === memberId);
+            if (!member) return;
+            
+            const modal = document.getElementById('memberModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            modalBody.innerHTML = `
+                <div class="modal-avatar">
+                    <img src="${pageContext.request.contextPath}/assets/avatars/\${member.avtUrl}" alt="\${member.hoVaTen}">
+                </div>
+                <h2 class="modal-name">\${member.hoVaTen}</h2>
+                <p class="modal-position">\${member.chucVu} - \${member.congViec}</p>
+                <div class="modal-details">
+                    <p><strong>📍 Địa chỉ:</strong> \${member.diaChi}</p>
+                    <p><strong>📞 Số điện thoại:</strong> \${member.sdt}</p>
+                    <p><strong>✉️ Email:</strong> \${member.email}</p>
+                    <p class="modal-bio"><strong>Giới thiệu:</strong><br>\${member.gioiThieu}</p>
+                </div>
+            `;
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMemberModal() {
+            const modal = document.getElementById('memberModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('memberModal');
+            if (event.target === modal) {
+                closeMemberModal();
+            }
+        }
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMemberModal();
+            }
+        });
+    </script>
 </body>
 </html>
