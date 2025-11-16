@@ -18,8 +18,16 @@
             <ul class="nav-menu">
                 <li><a href="${pageContext.request.contextPath}/members">MEMBERS</a></li>
                 <li><a href="${pageContext.request.contextPath}/about">ABOUT</a></li>
+                <% if (session.getAttribute("loggedInMember") != null) { %>
+                    <li><a href="${pageContext.request.contextPath}/edit">EDIT</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add">ADD</a></li>
+                <% } %>
             </ul>
-            <a href="#book" class="nav-btn">Book Trip</a>
+            <% if (session.getAttribute("loggedInMember") != null) { %>
+                <a href="${pageContext.request.contextPath}/logout" class="nav-btn nav-btn-logout">Logout</a>
+            <% } else { %>
+                <a href="${pageContext.request.contextPath}/login" class="nav-btn">Login</a>
+            <% } %>
         </div>
     </nav>
     

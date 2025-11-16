@@ -19,8 +19,16 @@
             <ul class="nav-menu">
                 <li><a href="${pageContext.request.contextPath}/members">MEMBERS</a></li>
                 <li><a href="${pageContext.request.contextPath}/about">ABOUT</a></li>
+                <% if (session.getAttribute("loggedInMember") != null) { %>
+                    <li><a href="${pageContext.request.contextPath}/edit">EDIT</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add">ADD</a></li>
+                <% } %>
             </ul>
-            <a href="#book" class="nav-btn">Book Trip</a>
+            <% if (session.getAttribute("loggedInMember") != null) { %>
+                <a href="${pageContext.request.contextPath}/logout" class="nav-btn nav-btn-logout">Logout</a>
+            <% } else { %>
+                <a href="${pageContext.request.contextPath}/login" class="nav-btn">Login</a>
+            <% } %>
         </div>
     </nav>
     
@@ -33,7 +41,8 @@
             <div class="content-box" onclick="showMemberModal(${member.id})" style="cursor: pointer;">
                 <div class="member-avatar">
                     <img src="${pageContext.request.contextPath}/assets/avatars/${member.avtUrl}" 
-                         alt="${member.hoVaTen}">
+                         alt="${member.hoVaTen}"
+                         onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/assets/avatars/defAvatar.jpg';">
                 </div>
                 <div class="member-info">
                     <h3>${member.hoVaTen}</h3>
@@ -92,7 +101,9 @@
             
             modalBody.innerHTML = `
                 <div class="modal-avatar">
-                    <img src="${pageContext.request.contextPath}/assets/avatars/\${member.avtUrl}" alt="\${member.hoVaTen}">
+                    <img src="${pageContext.request.contextPath}/assets/avatars/\${member.avtUrl}" 
+                         alt="\${member.hoVaTen}"
+                         onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/assets/avatars/defAvatar.jpg';">
                 </div>
                 <h2 class="modal-name">\${member.hoVaTen}</h2>
                 <p class="modal-position">\${member.chucVu} - \${member.congViec}</p>
