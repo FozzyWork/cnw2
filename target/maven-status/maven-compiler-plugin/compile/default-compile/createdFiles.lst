@@ -1,8 +1,15 @@
+com\cnw\controllers\LogoutController.class
+com\cnw\controllers\WelcomeController.class
+com\cnw\models\dao\ProjectDAO.class
+com\cnw\controllers\AddController.class
+com\cnw\models\bo\ProjectBO.class
 com\cnw\models\bean\Member.class
 com\cnw\controllers\MemberController.class
-com\cnw\controllers\LogoutController.class
 com\cnw\controllers\AboutController.class
+com\cnw\controllers\EditController.class
 com\cnw\models\dao\MemberDAO.class
 com\cnw\utils\DBConnection.class
+com\cnw\models\bean\Project.class
+com\cnw\controllers\ProjectController.class
 com\cnw\controllers\LoginController.class
 com\cnw\models\bo\MemberBO.class

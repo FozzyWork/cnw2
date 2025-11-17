@@ -22,7 +22,7 @@ public class MemberDAO {
 
             while (rs.next()) {
                 Member member = new Member();
-                member.setId(rs.getInt("Id"));
+                member.setId(rs.getInt("IdMem"));
                 member.setHoVaTen(rs.getString("HoVaTen"));
                 member.setCongViec(rs.getString("CongViec"));
                 member.setChucVu(rs.getString("ChucVu"));
@@ -60,7 +60,7 @@ public class MemberDAO {
 
         try {
             conn = DBConnection.getConnection();
-            pstmt = conn.prepareStatement("SELECT * FROM members WHERE Id = ?");
+            pstmt = conn.prepareStatement("SELECT * FROM members WHERE IdMem = ?");
             pstmt.setInt(1, id);
             rs = pstmt.executeQuery();
 
@@ -110,7 +110,7 @@ public class MemberDAO {
 
             if (rs.next()) {
                 member = new Member();
-                member.setId(rs.getInt("Id"));
+                member.setId(rs.getInt("IdMem"));
                 member.setHoVaTen(rs.getString("HoVaTen"));
                 member.setCongViec(rs.getString("CongViec"));
                 member.setChucVu(rs.getString("ChucVu"));
@@ -146,7 +146,7 @@ public class MemberDAO {
         try {
             conn = DBConnection.getConnection();
             String sql = "UPDATE members SET HoVaTen = ?, CongViec = ?, ChucVu = ?, " +
-                    "DiaChi = ?, SDT = ?, Email = ?, GioiThieu = ?, AvtUrl = ? WHERE Id = ?";
+                        "DiaChi = ?, SDT = ?, Email = ?, GioiThieu = ?, AvtUrl = ? WHERE IdMem = ?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, member.getHoVaTen());
             pstmt.setString(2, member.getCongViec());
@@ -181,7 +181,8 @@ public class MemberDAO {
 
         try {
             conn = DBConnection.getConnection();
-            String sql = "INSERT INTO members (HoVaTen, CongViec, ChucVu, DiaChi, SDT, Email, GioiThieu, AvtUrl, MatKhau) " +
+            String sql = "INSERT INTO members (HoVaTen, CongViec, ChucVu, DiaChi, SDT, Email, GioiThieu, AvtUrl, MatKhau) "
+                    +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, member.getHoVaTen());

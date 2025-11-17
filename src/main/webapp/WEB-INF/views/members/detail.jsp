@@ -20,6 +20,7 @@
                 <li><a href="${pageContext.request.contextPath}/members">MEMBERS</a></li>
                 <li><a href="${pageContext.request.contextPath}/about">ABOUT</a></li>
                 <% if (session.getAttribute("loggedInMember") != null) { %>
+                    <li><a href="${pageContext.request.contextPath}/projects">PROJECTS</a></li>
                     <li><a href="${pageContext.request.contextPath}/edit">EDIT</a></li>
                     <li><a href="${pageContext.request.contextPath}/add">ADD</a></li>
                 <% } %>
